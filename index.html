@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>RimskyProjects</title>
+<title>Projects</title>
 <link rel="stylesheet" href="style.css">
 
 <!-- Markdown用 -->
@@ -12,7 +12,7 @@
 <body>
 
 <header>
-  <h1>RimskyProjects</h1>
+  <h1>Projects</h1>
 </header>
 
 <div class="container">
@@ -23,6 +23,20 @@
 </div>
 
 <script>
+// ★追加：強制ダウンロード関数
+function downloadFile(url, filename) {
+  fetch(url)
+    .then(res => res.blob())
+    .then(blob => {
+      const a = document.createElement("a");
+      const objectUrl = URL.createObjectURL(blob);
+      a.href = objectUrl;
+      a.download = filename || "download";
+      a.click();
+      URL.revokeObjectURL(objectUrl);
+    });
+}
+
 fetch("data.json")
 .then(res => res.json())
 .then(data => {
@@ -45,7 +59,9 @@ fetch("data.json")
           <div class="version">
             <b>v${v.version}</b> (${v.date})<br>
             ${v.changelog}<br>
-            <a href="${v.download}" target="_blank">Download</a>
+            <a href="#" onclick="downloadFile('${v.download}', '${p.name}_v${v.version}'); return false;">
+              Download
+            </a>
           </div>
         `).join("")}
       `;
