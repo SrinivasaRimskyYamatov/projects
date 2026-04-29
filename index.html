@@ -62,7 +62,7 @@ fetch("data.json")
           <div class="version">
             <b>v${v.version}</b> (${v.date})<br>
             ${v.changelog}<br>
-            <a href="${v.download}" onclick="downloadFile(event, '${v.download}', '${p.name}_v${v.version}')">
+            <a href="${v.download}" onclick="downloadFile(event, this.href, '${p.name}_v${v.version}')">
               Download
             </a>
           </div>
