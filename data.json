@@ -1,1 +1,24 @@
-
+{
+  "projects": [
+    {
+      "id": "rdos",
+      "name": "RDOS",
+      "description": "軽量な自作OS",
+      "long_description": "# RDOS\n\nシンプルな自作OSです。\n\n- x86対応\n- 学習向け\n",
+      "versions": [
+        {
+          "version": "0.1",
+          "date": "2026-04-01",
+          "changelog": "初版リリース",
+          "download": "https://example.com/rdos-v0.1.zip"
+        },
+        {
+          "version": "0.2",
+          "date": "2026-04-10",
+          "changelog": "ファイルシステム追加",
+          "download": "https://example.com/rdos-v0.2.zip"
+        }
+      ]
+    }
+  ]
+}
