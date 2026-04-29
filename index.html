@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>RimskyProjects</title>
+<link rel="stylesheet" href="style.css">
+
+<!-- Markdown用 -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+
+<header>
+  <h1>RimskyProjects</h1>
+</header>
+
+<div class="container">
+  <div class="sidebar" id="sidebar"></div>
+  <div class="main" id="main">
+    <h2>プロジェクトを選択</h2>
+  </div>
+</div>
+
+<script>
+fetch("data.json")
+.then(res => res.json())
+.then(data => {
+
+  const sidebar = document.getElementById("sidebar");
+  const main = document.getElementById("main");
+
+  data.projects.forEach(p => {
+    const el = document.createElement("div");
+    el.className = "project";
+    el.innerHTML = `<b>${p.name}</b><br><small>${p.description}</small>`;
+
+    el.onclick = () => {
+      main.innerHTML = `
+        <h2>${p.name}</h2>
+        <div>${marked.parse(p.long_description)}</div>
+
+        <h3>Versions</h3>
+        ${p.versions.map(v => `
+          <div class="version">
+            <b>v${v.version}</b> (${v.date})<br>
+            ${v.changelog}<br>
+            <a href="${v.download}" target="_blank">Download</a>
+          </div>
+        `).join("")}
+      `;
+    };
+
+    sidebar.appendChild(el);
+  });
+
+});
+</script>
+
+</body>
+</html>
