@@ -19,7 +19,8 @@
           "download": "https://example.com/rdos-v0.2.zip"
         }
       ]
-    }
+    },
+    {
       "id": "tf",
       "name": "TinyFlex",
       "description": "Rubyの自作言語",
@@ -32,5 +33,6 @@
           "download": "https://raw.githubusercontent.com/SrinivasaRimskyYamatov/prdl/main/TINYFLEXV1.rb"
         }
       ]
+    }
   ]
 }
