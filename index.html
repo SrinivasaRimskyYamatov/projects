@@ -24,8 +24,8 @@
 
 <script>
 
-// ★追加：ダウンロード関数
-function downloadFile(e, url, filename) {
+// ★追加：ダウンロード関数（これだけ）
+function downloadFile(e, url) {
   e.preventDefault();
 
   fetch(url)
@@ -34,7 +34,7 @@ function downloadFile(e, url, filename) {
       const a = document.createElement("a");
       const objectUrl = URL.createObjectURL(blob);
       a.href = objectUrl;
-      a.download = filename;
+      a.download = "";
       a.click();
       URL.revokeObjectURL(objectUrl);
     });
@@ -62,9 +62,7 @@ fetch("data.json")
           <div class="version">
             <b>v${v.version}</b> (${v.date})<br>
             ${v.changelog}<br>
-            <a href="${v.download}" onclick="downloadFile(event, this.href, '${p.name}_v${v.version}')">
-              Download
-            </a>
+            <a href="${v.download}" onclick="downloadFile(event, this.href)">Download</a>
           </div>
         `).join("")}
       `;
