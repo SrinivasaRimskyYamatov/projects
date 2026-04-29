@@ -20,5 +20,17 @@
         }
       ]
     }
+      "id": "tf",
+      "name": "TinyFlex",
+      "description": "Rubyの自作言語",
+      "long_description": "# TinyFlex\n\nシンプルな自作プログラミング言語です。\n\n- Rubyにて制作\n- 学習向け\n",
+      "versions": [
+        {
+          "version": "1",
+          "date": "Unknown",
+          "changelog": "初版リリース",
+          "download": "https://raw.githubusercontent.com/SrinivasaRimskyYamatov/prdl/main/TINYFLEXV1.rb"
+        },
+      ]
   ]
 }
