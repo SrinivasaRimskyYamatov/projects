@@ -23,15 +23,18 @@
 </div>
 
 <script>
-// ★追加：強制ダウンロード関数
-function downloadFile(url, filename) {
+
+// ★追加：ダウンロード関数
+function downloadFile(e, url, filename) {
+  e.preventDefault();
+
   fetch(url)
     .then(res => res.blob())
     .then(blob => {
       const a = document.createElement("a");
       const objectUrl = URL.createObjectURL(blob);
       a.href = objectUrl;
-      a.download = filename || "download";
+      a.download = filename;
       a.click();
       URL.revokeObjectURL(objectUrl);
     });
@@ -59,7 +62,7 @@ fetch("data.json")
           <div class="version">
             <b>v${v.version}</b> (${v.date})<br>
             ${v.changelog}<br>
-            <a href="#" onclick="downloadFile('${v.download}', '${p.name}_v${v.version}'); return false;">
+            <a href="${v.download}" onclick="downloadFile(event, '${v.download}', '${p.name}_v${v.version}')">
               Download
             </a>
           </div>
